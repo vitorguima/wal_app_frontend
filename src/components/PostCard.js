@@ -10,7 +10,8 @@ export default function PostsCard(props) {
   } = props;
 
   return (
-    <div>PostsCard
+    <div>
+      <p>PostsCard</p>
       <p>title: {title}</p>
       <p>content: {content}</p>
       <p>author: {authorNickname}</p>
