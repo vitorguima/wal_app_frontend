@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getPostsList } from '../services/getPostsService';
+import NewPostForm from './NewPostForm';
 import PostsCard from './PostCard';
 
 export default function PostsFeed() {
@@ -39,6 +40,8 @@ export default function PostsFeed() {
     <div>
       <p>PostsFeed</p>
       { !isLoading ? renderPostCards() : <p>Loading...</p> }
+      <p>{ errorMessage ? errorMessage : null }</p>
+      <NewPostForm />
     </div>
   )
 }
