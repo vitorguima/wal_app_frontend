@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react';
+import AppContext from '../context/AppContext';
 import { submitPostService } from '../services/submitPostService';
 import { validateTokenService } from '../services/validateTokenService';
 
@@ -8,10 +9,28 @@ export default function NewPostForm() {
   const [content, setContent] = useState('');
   const [title, setTitle] = useState('');
   const [token, setToken] = useState('');
-  const [hasAuthentication, setHasAuthentication] = useState(false);
+  const {
+    hasAuthentication,
+    setHasAuthentication,
+    submittedPosts,
+    setSubmittedPosts,
+  } = useContext(AppContext)
+
+  const submitPost = async (title, content, token) => {
+    const response = await submitPostService(title, content, token);
+    setIsLoading(true);
+    if (response.status === 201) {
+      setIsLoading(false);
+      setSubmittedPosts(submittedPosts + 1);
+      setTitle('');
+      setContent('');
+      return
+    } setIsLoading(false);
+    setErrorMessage(response.data.error.message)
+  }
 
   useEffect(() => {
-    const retrievedToken = localStorage.getItem('token');
+    const retrievedToken = sessionStorage.getItem('token');
     if (retrievedToken === null) {
       setIsLoading(false);
       return
@@ -59,13 +78,14 @@ export default function NewPostForm() {
           />
         </div>
         <button
-          onClick={() => submitPostService(title, content, token) }
+          onClick={() => submitPost(title, content, token) }
           type="button"
           disabled={ !hasAuthentication }
         >
         { isLoading ? 'loading' : 'Submit' }
         </button>
       </form>
+      <p>{errorMessage ? errorMessage : null}</p>
     </div>
   )
 }
