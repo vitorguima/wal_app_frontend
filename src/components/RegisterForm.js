@@ -1,32 +1,41 @@
-import axios from 'axios';
-import React, { useState } from 'react'
+import  { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { validateEmail } from '../helpers/validations';
+import { submitRegister } from '../services/submitRegisterService';
 
-const REGISTER_ENDPOINT = 'https://wall-app-api.herokuapp.com/api/v1/user'
+const treatsErrorMessage = (message) => {
+  const treatedMessage = message.split(',');
+  return treatedMessage[0];
+}
 
-export default function Home() {
+export default function RegisterForm() {
+  const [isLoading, setIsLoading] = useState(false)
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [nickname, setNickname] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const history = useHistory();
 
   const submitRegistration = async () => {
-    const response = await axios({
-      method: 'POST',
-      data: {
-        user: {
-          first_name: firstName,
-          last_name: lastName,
-          email: email,
-          nickname: nickname,
-          password: password,
-        }
-      },
-      withCredentials: true,
-      url: REGISTER_ENDPOINT,
-    })
+    setErrorMessage('');
+    setIsLoading(true);
+    const response = await submitRegister(
+      firstName,
+      lastName,
+      email,
+      nickname,
+      password
+    );
 
-    console.log(response)
+    if (response.status === 201) {
+      setIsLoading(false)
+      history.push('/')
+      return
+    } setIsLoading(false)
+    setErrorMessage(treatsErrorMessage(response.data.error.message))
   }
 
   return (
@@ -80,10 +89,12 @@ export default function Home() {
           <button
             onClick={ () => submitRegistration() }
             type="button"
+            disabled={ validateEmail(email) }
           >
-            Register
+            { isLoading ? 'loading' : 'Sign up' }
           </button>
       </form>
+      <p>{errorMessage ? errorMessage : null}</p>
     </div>
   )
 }
