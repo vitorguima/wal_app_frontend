@@ -7,7 +7,7 @@ export const submitPostService = async (title, content, token) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorizaton': `Bearer ${token}`
+        'Authorization': `Bearer ${token}`
       },
       data: {
         title,
