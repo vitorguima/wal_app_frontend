@@ -2,7 +2,7 @@ import { submitLoginService } from '../services/submitLoginService';
 import { Link, useHistory } from 'react-router-dom'
 import React, { useState } from 'react'
 import { validateEmail } from '../helpers/validations';
-import { LoginFormWrapper, LoginField, FieldWrapper } from '../styles/LoginForm';
+import { Form, LoginField, Button } from '../styles/LoginForm';
 
 export default function LoginForm() {
   const [isLoading, setIsLoading] = useState(false)
@@ -27,8 +27,7 @@ export default function LoginForm() {
   }
 
   return (
-    <LoginFormWrapper>
-      <FieldWrapper>
+    <Form>
         <LoginField
           type="text"
           name="email"
@@ -36,8 +35,6 @@ export default function LoginForm() {
           onChange={({ target }) => setEmail(target.value)}
           placeholder="Email"
         />
-      </FieldWrapper>
-      <FieldWrapper>
         <LoginField
           type="password"
           name="password"
@@ -45,18 +42,17 @@ export default function LoginForm() {
           onChange={({ target }) => setPassword(target.value)}
           placeholder="Password"
         />
-      </FieldWrapper>
-      <button
+      <Button
         onClick={() => submitLogin()}
         type="button"
         disabled={validateEmail(email)}
       >
         {isLoading ? 'Loading' : 'Sign in'}
-      </button>
-      <p>{errorMessage ? errorMessage : null}</p>
+      </Button>
+      <p>{ errorMessage ? errorMessage : null }</p>
       <p>
         Not a waller? <Link to="/register">sign up</Link>
       </p>
-    </LoginFormWrapper>
+    </Form>
   )
 }
