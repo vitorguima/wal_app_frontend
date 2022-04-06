@@ -1,12 +1,13 @@
 import React from 'react'
 import LoginForm from '../components/LoginForm'
-import { HomeWrapper, FormWrapper, LogoWrapper  } from '../styles/home'
+import { HomeWrapper, FormWrapper, LogoWrapper, Logo  } from '../styles/home'
 
 export default function Home() {
   return (
     <HomeWrapper>
       <LogoWrapper>
-        <p>image</p>
+        <Logo>The Wall</Logo>
+        <p>Bring your ideas to our community!</p>
       </LogoWrapper>
       <FormWrapper>
         <LoginForm />
