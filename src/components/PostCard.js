@@ -1,4 +1,5 @@
 import React from 'react'
+import { PostCard, PostTitle, PostDetails, PostContent } from '../styles/PostCard';
 
 export default function PostsCard(props) {
   const {
@@ -10,13 +11,16 @@ export default function PostsCard(props) {
   } = props;
 
   return (
-    <div>
-      <p>PostsCard</p>
-      <p>title: {title}</p>
-      <p>content: {content}</p>
-      <p>author: {authorNickname}</p>
-      <p>created at: {createdAt}</p>
-      <p>updated at: {updatedAt}</p>
-    </div>
+    <PostCard>
+      <PostTitle>title: {title}</PostTitle>
+      <PostDetails>
+        <p>Author: {authorNickname}</p>
+        <p>Created at: {createdAt}</p>
+        <p>Updated at: {updatedAt}</p>
+      </PostDetails>
+      <PostContent>
+        <p>{content}</p>
+      </PostContent>
+    </PostCard>
   )
 }
