@@ -2,7 +2,8 @@ import { submitLoginService } from '../services/submitLoginService';
 import { Link, useHistory } from 'react-router-dom'
 import React, { useState } from 'react'
 import { validateEmail } from '../helpers/validations';
-import { Form, LoginField, Button } from '../styles/LoginForm';
+import { Form, LoginField, LoginButton, VisitorButton } from '../styles/LoginForm';
+import { Redirect } from 'react-router-dom';
 
 export default function LoginForm() {
   const [isLoading, setIsLoading] = useState(false)
@@ -26,6 +27,12 @@ export default function LoginForm() {
     setErrorMessage('Invalid user or password!')
   }
 
+  const redirectAsVisitor = () => {
+    return (
+      history.push('/feed')
+    )
+  }
+
   return (
     <Form>
         <LoginField
@@ -42,16 +49,22 @@ export default function LoginForm() {
           onChange={({ target }) => setPassword(target.value)}
           placeholder="Password"
         />
-      <Button
+      <LoginButton
         onClick={() => submitLogin()}
         type="button"
         disabled={validateEmail(email)}
       >
         {isLoading ? 'Loading' : 'Sign in'}
-      </Button>
+      </LoginButton>
+      <VisitorButton
+        onClick={() => redirectAsVisitor()}
+        type="button"
+      >
+        {isLoading ? 'Loading' : 'Visitor'}
+      </VisitorButton>
       <p>{ errorMessage ? errorMessage : null }</p>
       <p>
-        Not a waller? <Link to="/register">sign up</Link>
+        Become a brick! <Link to="/register">sign up</Link>
       </p>
     </Form>
   )
