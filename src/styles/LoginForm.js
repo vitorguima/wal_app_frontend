@@ -20,7 +20,7 @@ export const Form = styled.form`
 
 export const LoginField = styled.input`
   background-color: white;
-  height: 10%;
+  height: 13%;
   width: 80%;
   margin: 0.9rem;
   border-radius: 0.2vw;

@@ -3,7 +3,6 @@ import { Link, useHistory } from 'react-router-dom'
 import React, { useState } from 'react'
 import { validateEmail } from '../helpers/validations';
 import { Form, LoginField, LoginButton, VisitorButton } from '../styles/LoginForm';
-import { Redirect } from 'react-router-dom';
 
 export default function LoginForm() {
   const [isLoading, setIsLoading] = useState(false)
