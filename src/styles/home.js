@@ -20,7 +20,7 @@ export const FormWrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 35vw;
-  height: 50%vh;
+  height: 50vh;
   margin: 5rem;
 `;
 
