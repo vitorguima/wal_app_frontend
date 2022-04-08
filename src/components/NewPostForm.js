@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import AppContext from '../context/AppContext';
 import { submitPostService } from '../services/submitPostService';
-import { validateTokenService } from '../services/validateTokenService';
+import { ButtonWrapper, ContentField, Form, FormWrapper, SubmitButton, TitleField } from '../styles/newPostForm';
 
 export default function NewPostForm() {
   const [errorMessage, setErrorMessage] = useState('');
@@ -9,9 +9,9 @@ export default function NewPostForm() {
   const [content, setContent] = useState('');
   const [title, setTitle] = useState('');
   const [token, setToken] = useState('');
+
   const {
     hasAuthentication,
-    setHasAuthentication,
     submittedPosts,
     setSubmittedPosts,
   } = useContext(AppContext)
@@ -30,35 +30,14 @@ export default function NewPostForm() {
   }
 
   useEffect(() => {
-    const retrievedToken = sessionStorage.getItem('token');
-    if (retrievedToken === null) {
-      setIsLoading(false);
-      return
-    }
-
-    const validateToken = async () => {
-      setIsLoading(true);
-      setToken(retrievedToken);
-      const response = await validateTokenService(retrievedToken);
-
-      if (response.status === 200) {
-        setHasAuthentication(true);
-        setIsLoading(false);
-        return
-      } setIsLoading(false);
-      setErrorMessage(response.data.error.message)
-    }
-
-    validateToken();
+    const token = sessionStorage.getItem('token');
+    setToken(token);
   }, [])
-  
 
   return (
-    <div>
-      <p>NewPostForm</p>
-      <form>
-        <div>
-          <input 
+    <FormWrapper>
+      <Form>
+          <TitleField 
             type="text"
             name="title"
             value={ title }
@@ -66,26 +45,27 @@ export default function NewPostForm() {
             placeholder="Title"
             disabled={ !hasAuthentication }
           />
-        </div>
-        <div>
-          <input
+          <ContentField
             type="text"
             name="content"
             value={ content }
             onChange={ ({ target }) => setContent(target.value) }
-            placeholder="Write your ideas!"
+            placeholder="Write your idea!"
             disabled={ !hasAuthentication }
           />
+        <ButtonWrapper>
+          <SubmitButton
+            onClick={() => submitPost(title, content, token) }
+            type="button"
+            disabled={ !hasAuthentication }
+          >
+            Post
+          </SubmitButton>
+        </ButtonWrapper>
+        <div>
+          <p>{errorMessage ? errorMessage : null}</p>
         </div>
-        <button
-          onClick={() => submitPost(title, content, token) }
-          type="button"
-          disabled={ !hasAuthentication }
-        >
-        { isLoading ? 'loading' : 'Submit' }
-        </button>
-      </form>
-      <p>{errorMessage ? errorMessage : null}</p>
-    </div>
+      </Form>
+    </FormWrapper>
   )
 }
