@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import AppContext from '../context/AppContext';
 import { getPostsList } from '../services/getPostsService';
 import PostsCard from './PostCard';
+import LoadingSvg from '../assets/Loading';
 
 export default function PostsFeed() {
   const { 
@@ -44,8 +45,8 @@ export default function PostsFeed() {
   )
 
   return (
-    <div>
-      { !isFeedLoading ? renderPostCards() : <p>Loading...</p> }
+    <div style={ { height: '100%', backgroundColor: '#F0F8FF' } }>
+      { isFeedLoading ? <LoadingSvg /> : renderPostCards() }
       <p>{ errorMessage ? errorMessage : null }</p>
     </div>
   )

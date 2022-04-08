@@ -4,17 +4,28 @@ import {
 } from './sizeAndDevices';
 
 export const HeaderWrapper = styled.div`
-  background-color: black;
+  background-color: #0066b2;
   display: flex;
   width: 100vw;
-  height: 7vh;
-  font-size: 2.2em;
+  height: 8vh;
+  font-size: 1.4em;
   align-items: center;
+  margin-bottom: 1rem;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
 
   span {
     color: white;
     padding: 0;
     margin: 2vw;
+
+    :hover {
+      text-decoration: underline;
+      font-weight: bold;
+    }
   }
 
   @media ${devices.desktop} {
@@ -44,3 +55,13 @@ export const HeaderMinorWrapper = styled.div`
   /* background-color: red; */
   justify-content: flex-end;
 `;
+
+export const LogoutButton = styled.button`
+  background: none;
+  color: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin: 2vw;
+`
