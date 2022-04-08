@@ -1,7 +1,7 @@
 import { submitLoginService } from '../services/submitLoginService';
 import { Link, useHistory } from 'react-router-dom'
 import React, { useContext, useState } from 'react'
-import { validateEmail } from '../helpers/validations';
+import { validateEmail } from '../helpers/formsValidations';
 import { Form, LoginField, LoginButton, VisitorButton } from '../styles/LoginForm';
 import LoadingSvg from '../assets/Loading';
 import AppContext from '../context/AppContext';
@@ -18,7 +18,8 @@ export default function LoginForm() {
 
   const history = useHistory();
 
-  const submitLogin = async () => {
+  const submitLogin = async (event) => {
+    event.preventDefault();
     setIsLoading(true);
     setErrorMessage('');
     const response = await submitLoginService(email, password);
@@ -40,7 +41,7 @@ export default function LoginForm() {
   }
 
   return (
-    <Form onSubmit={() => redirectAsVisitor()}>
+    <Form onSubmit={() => submitLogin()}>
         <LoginField
           type="text"
           name="email"
@@ -56,9 +57,9 @@ export default function LoginForm() {
           placeholder="Password"
         />
       <LoginButton
-        onClick={() => submitLogin()}
+        onClick={(event) => submitLogin(event)}
         type="submit"
-        disabled={validateEmail(email)}
+        disabled={!validateEmail(email)}
       >
         Sign in
       </LoginButton>
@@ -77,4 +78,4 @@ export default function LoginForm() {
       </p>
     </Form>
   )
-}
+};

@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import {
+  devices
+} from './sizeAndDevices';
 
 export const Form = styled.form`
   border-color: white;
@@ -55,6 +58,15 @@ export const LoginButton = styled.button`
   :hover {
     background: #00BFFF;
   }
+
+  @media ${devices.tablet} {
+    width: 60%;
+  }
+  
+  @media ${devices.mobileL} {
+    width: 40%;
+    padding: 0.5rem 1rem;
+  }
 `;
 
 export const VisitorButton = styled.button`
@@ -73,5 +85,10 @@ export const VisitorButton = styled.button`
   transition: all 0.3s ease-out;
   :hover {
     background: #C8C8C8;
+  }
+
+  @media ${devices.mobileL} {
+    width: 40%;
+    padding: 0.5rem 1rem;
   }
 `;
