@@ -25,13 +25,13 @@ export default function PostsCard(props) {
         {title}
       </PostTitle>
       <p>Author: {authorNickname}</p>
+      <PostContent>
+        <p>{content}</p>
+      </PostContent>
       <PostDetails>
         <p>Created at: {convertData(createdAt)}</p>
         <p>Updated at: {convertData(updatedAt)}</p>
       </PostDetails>
-      <PostContent>
-        <p>{content}</p>
-      </PostContent>
     </PostCard>
   )
 }
