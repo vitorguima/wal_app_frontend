@@ -1,6 +1,6 @@
 import  { useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
-import { validateFields } from '../helpers/validations';
+import { validateFields } from '../helpers/formsValidations';
 import { RegisterField, RegisterButton } from '../styles/registerForm';
 import { submitRegister } from '../services/submitRegisterService';
 import { Form } from '../styles/registerForm';

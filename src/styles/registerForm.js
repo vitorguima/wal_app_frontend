@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import {
+  devices
+} from './sizeAndDevices';
 
 export const FormWrapper = styled.div`
   display: flex;
@@ -7,7 +10,7 @@ export const FormWrapper = styled.div`
   justify-content: center;
   align-items: center;
   align-content: center;
-  background-color: #F0F8FF;
+  background-color: #FDF4E3;
 `;
 
 export const Form = styled.form`
@@ -15,16 +18,27 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   background-color: white;
-  height: 80%;
+  height: 75%;
   width: 30%;
   justify-content: center;
   align-items: center;
   border-radius: 0.3vw;
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
 
-  p {
-    margin-top: 0.8rem;
-    font-size: 1.2rem;
+  h2 {
+    font-size: 1.9rem;
+
+    @media ${devices.mobileL} {
+      font-size: 1.6rem;
+    }
+  }
+
+  @media ${devices.tablet} {
+    width: 70%;
+  }
+
+  @media ${devices.mobileL} {
+    width: 90%;
   }
 `;
 
