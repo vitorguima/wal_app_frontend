@@ -6,6 +6,6 @@ export const FeedWrapper = styled.div`
   align-items: center;
   width: 100vw;
   min-height: 100vh;
-  max-heiht: 100%;
-  background-color: #F0F8FF;
+  max-height: 100%;
+  background-color: #FDF4E3
 `;

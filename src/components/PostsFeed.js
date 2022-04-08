@@ -45,9 +45,9 @@ export default function PostsFeed() {
   )
 
   return (
-    <div style={ { height: '100%', backgroundColor: '#F0F8FF' } }>
+    <>
       { isFeedLoading ? <LoadingSvg /> : renderPostCards() }
       <p>{ errorMessage ? errorMessage : null }</p>
-    </div>
+    </>
   )
 }
