@@ -1,25 +1,37 @@
 import styled from "styled-components";
+import {
+  devices
+} from './sizeAndDevices';
 
 export const FormWrapper = styled.div`
   margin-top: 7rem;
+  justify-content: center;
   display: flex;
-  justify-content: flex-start;
-  width: 37vw;
+  width: 100%;
   padding: 0.4rem;
   height: 20vh;
-  background-color: #F0F8FF;
+  background-color: #FDF4E3;
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   height: 100%;
-  width: 100%;
+  width: 40%;
   border-radius: 0.3vw;
 
   p {
     margin-top: 0.8rem;
     font-size: 1.2rem;
+  }
+
+  @media ${devices.tablet} {
+    width: 70%;
+  }
+
+  @media ${devices.mobileL} {
+    width: 80%;
   }
 `;
 
@@ -80,6 +92,11 @@ export const SubmitButton = styled.button`
   transition: all 0.3s ease-out;
   :hover {
     background: #00BFFF;
+  }
+
+  @media ${devices.mobileL} {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.5rem;
   }
 `;
 
