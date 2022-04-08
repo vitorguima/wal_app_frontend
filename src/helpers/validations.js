@@ -1,8 +1,15 @@
 export const validateEmail = (email) => {
-  const pattern = /\S+@\S+\.\S+/
+  const patternCheck = /\S+@\S+\.\S+/
     .test(email);
-  if (pattern) {
-    return false;
-  }
-  return true;
+  return patternCheck;
 };
+
+export const validatePassword = (password, confirmPassword) => {
+  return password === confirmPassword;
+}
+
+export const validateFields = (email, password, confirmPassword) => {
+  if (validateEmail(email) && validatePassword(password, confirmPassword)) {
+    return false;
+  } return true;
+}

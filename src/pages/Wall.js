@@ -6,10 +6,12 @@ import { FeedWrapper } from '../styles/PostsFeed'
 
 export default function Wall() {
   return (
-    <FeedWrapper>
+    <>
       <Header />
-      <NewPostForm />
-      <PostsFeed />
-    </FeedWrapper>
+      <FeedWrapper>
+        <NewPostForm />
+        <PostsFeed />
+      </FeedWrapper>
+    </>
   )
 }
