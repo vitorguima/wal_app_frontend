@@ -45,6 +45,7 @@ export default function RegisterForm() {
 
   return (
     <Form onSubmit={() => submitRegistration()}>
+      <h2>Become a new brick!</h2>
       <RegisterField 
         type="text"
         name="firstName"
