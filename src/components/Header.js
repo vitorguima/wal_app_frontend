@@ -12,6 +12,7 @@ export default function Header() {
   const {
     hasAuthentication,
     setHasAuthentication,
+    setUser,
   } = useContext(AppContext)
 
   const logoutUser = () => {
@@ -33,6 +34,7 @@ export default function Header() {
       if (response.status === 200) {
         setHasAuthentication(true);
         setIsLoading(false);
+        setUser(response.data.token);
         return
       } setIsLoading(false);
     }
@@ -40,7 +42,7 @@ export default function Header() {
     validateToken();
   }, [])
 
-  const renderHeaderItems2 = () => {
+  const renderHeaderItems = () => {
     if (hasAuthentication) {
       return (
         <>
@@ -78,7 +80,7 @@ export default function Header() {
 
   return (
     <HeaderWrapper>
-      { isLoading ? null : renderHeaderItems2() }
+      { isLoading ? null : renderHeaderItems() }
     </HeaderWrapper>
   )
 }

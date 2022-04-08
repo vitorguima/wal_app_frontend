@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import AppContext from '../context/AppContext';
 import { PostCard, PostTitle, PostDetails, PostContent } from '../styles/PostCard';
 
 const convertData = (unformattedDate) => {
@@ -8,6 +9,8 @@ const convertData = (unformattedDate) => {
 }
 
 export default function PostsCard(props) {
+  const { user } = useContext(AppContext);
+  console.log(user);
   const {
     title,
     content,
@@ -18,9 +21,11 @@ export default function PostsCard(props) {
 
   return (
     <PostCard>
-      <PostTitle>{title}</PostTitle>
+      <PostTitle>
+        {title}
+      </PostTitle>
+      <p>Author: {authorNickname}</p>
       <PostDetails>
-        <p>Author: {authorNickname}</p>
         <p>Created at: {convertData(createdAt)}</p>
         <p>Updated at: {convertData(updatedAt)}</p>
       </PostDetails>
