@@ -1,10 +1,16 @@
 import { submitLoginService } from '../services/submitLoginService';
 import { Link, useHistory } from 'react-router-dom'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { validateEmail } from '../helpers/validations';
 import { Form, LoginField, LoginButton, VisitorButton } from '../styles/LoginForm';
+import LoadingSvg from '../assets/Loading';
+import AppContext from '../context/AppContext';
 
 export default function LoginForm() {
+  const {
+    setHasAuthentication,
+  } = useContext(AppContext);
+
   const [isLoading, setIsLoading] = useState(false)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,11 +21,12 @@ export default function LoginForm() {
   const submitLogin = async () => {
     setIsLoading(true);
     setErrorMessage('');
-    const response = await submitLoginService(email, password)
+    const response = await submitLoginService(email, password);
 
     if (response.status === 201) {
       setIsLoading(false);
       sessionStorage.setItem('token', response.data.token);
+      setHasAuthentication(true);
       history.push('/feed');
       return
     } setIsLoading(false);
@@ -33,7 +40,7 @@ export default function LoginForm() {
   }
 
   return (
-    <Form>
+    <Form onSubmit={() => redirectAsVisitor()}>
         <LoginField
           type="text"
           name="email"
@@ -50,18 +57,21 @@ export default function LoginForm() {
         />
       <LoginButton
         onClick={() => submitLogin()}
-        type="button"
+        type="submit"
         disabled={validateEmail(email)}
       >
-        {isLoading ? 'Loading' : 'Sign in'}
+        Sign in
       </LoginButton>
       <VisitorButton
         onClick={() => redirectAsVisitor()}
         type="button"
       >
-        {isLoading ? 'Loading' : 'Visitor'}
+        Visitor
       </VisitorButton>
-      <p>{ errorMessage ? errorMessage : null }</p>
+      <div>
+        { isLoading ? <LoadingSvg /> : null }
+        { errorMessage ? <p>{errorMessage}</p> : null }
+      </div>
       <p>
         Become a brick! <Link to="/register">sign up</Link>
       </p>
