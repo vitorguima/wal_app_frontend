@@ -11,6 +11,11 @@ export const FormWrapper = styled.div`
   padding: 0.4rem;
   height: 20vh;
   background-color: #FDF4E3;
+
+
+  @media ${devices.mobileL} {
+    height: 30vh;
+  }
 `;
 
 export const Form = styled.form`
@@ -31,7 +36,7 @@ export const Form = styled.form`
   }
 
   @media ${devices.mobileL} {
-    width: 80%;
+    width: 90%;
   }
 `;
 
@@ -97,6 +102,7 @@ export const SubmitButton = styled.button`
   @media ${devices.mobileL} {
     font-size: 0.8rem;
     padding: 0.5rem 0.5rem;
+    width: 18%;
   }
 `;
 

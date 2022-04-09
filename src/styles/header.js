@@ -20,7 +20,7 @@ export const HeaderWrapper = styled.div`
   span {
     color: black;
     padding: 0;
-    margin: 2vw;
+    margin: 1.1vw;
 
     :hover {
       text-decoration: underline;

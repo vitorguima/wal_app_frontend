@@ -5,7 +5,6 @@ import {
 
 export const PostCard = styled.div`
   padding: 0 1rem 0 1rem;
-  // border-top: #0066b2 solid 2px;
   margin: 0rem 8rem 0rem 8rem;
   width: 60%;
   height: 25vh;
@@ -25,7 +24,7 @@ export const PostCard = styled.div`
   
   @media ${devices.mobileL} {
     width: 90%;
-    height: 18vh;
+    height: 26vh;
   }
 `;
 
@@ -33,7 +32,7 @@ export const PostTitle = styled.h1`
   margin-top: 1rem;
 
   @media ${devices.mobileL} {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -69,5 +68,9 @@ export const PostContent = styled.div`
 
   @media ${devices.mobileL} {
     font-size: 0.9rem;
+  }
+
+  @media ${devices.mobileL} {
+    padding-bottom: 4.5rem;
   }
 `;
