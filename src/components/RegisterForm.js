@@ -2,7 +2,7 @@ import  { useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
 import { validateFields } from '../helpers/formsValidations';
 import { RegisterField, RegisterButton } from '../styles/registerForm';
-import { submitRegister } from '../services/submitRegisterService';
+import { submitRegister } from '../services/authentication/submitRegisterService';
 import { Form } from '../styles/registerForm';
 import LoadingSvg from '../assets/Loading';
 
