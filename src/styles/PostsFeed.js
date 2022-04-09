@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const FeedWrapper = styled.div`
+  padding-top: ${(props) => props.margin };
   display: flex;
   flex-direction: column;
   align-items: center;
