@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import AppContext from '../context/AppContext';
-import { validateTokenService } from '../services/validateTokenService';
+import { validateTokenService } from '../services/authentication/validateTokenService';
 
 import { HeaderBiggerWrapper, HeaderMinorWrapper, HeaderWrapper, LogoutButton } from '../styles/header';
 
@@ -13,6 +13,7 @@ export default function Header() {
     hasAuthentication,
     setHasAuthentication,
     setUser,
+    setToken,
   } = useContext(AppContext)
 
   const logoutUser = () => {
@@ -35,6 +36,7 @@ export default function Header() {
         setHasAuthentication(true);
         setIsLoading(false);
         setUser(response.data.token);
+        setToken(retrievedToken);
         return
       } setIsLoading(false);
     }
