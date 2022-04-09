@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import AppContext from '../context/AppContext';
-import { getPostsList } from '../services/getPostsService';
+import { getPostsList } from '../services/posts/getPostsService';
 import PostsCard from './PostCard';
 import LoadingSvg from '../assets/Loading';
 
@@ -39,7 +39,9 @@ export default function PostsFeed() {
         authorNickname={post.author_nickname}
         createdAt={post.created_at}
         updatedAt={post.updated_at}
+        userId={post.user_id}
         key={index}
+        postId={post.id}
       />
     ))
   )
