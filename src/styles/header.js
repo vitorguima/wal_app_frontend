@@ -16,6 +16,7 @@ export const HeaderWrapper = styled.div`
   right: 0;
   top: 0;
   z-index: 1;
+  border-bottom: #D3D3D3 solid 1px;
 
   span {
     color: black;

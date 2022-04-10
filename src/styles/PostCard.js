@@ -15,7 +15,7 @@ export const PostCard = styled.div`
   border-color: #D3D3D3;
   background-color: white;
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
-  margin-top: 3%;
+  margin-bottom: 1%;
 
   p {
     color: #707070;
@@ -29,6 +29,7 @@ export const PostCard = styled.div`
   @media ${devices.mobileL} {
     width: 90%;
     height: 25%;
+    margin-bottom: 3%;
   }
 `;
 
@@ -40,7 +41,7 @@ export const PostTitle = styled.h1`
   }
 `;
 
-export const PostDetails = styled.p`
+export const PostDetails = styled.div`
   display: flex;
   justify-content: flex-start;  
   padding: 0.7%;
