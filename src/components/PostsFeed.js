@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState } from 'react'
 import AppContext from '../context/AppContext';
 import { getPostsListService } from '../services/posts/getPostsService';
@@ -13,6 +14,7 @@ export default function PostsFeed() {
     submittedPosts,
     postsList,
     setPostsList,
+    user,
   } = useContext(AppContext);
 
   const [errorMessage, setErrorMessage] = useState('');
@@ -51,6 +53,9 @@ export default function PostsFeed() {
         createdAt={post.created_at}
         updatedAt={post.updated_at}
         key={index}
+        userId={post.user_id}
+        user={user}
+        postId={post.id}
       />
     ))
   )
@@ -58,6 +63,7 @@ export default function PostsFeed() {
   return (
     <>
       { isFeedLoading ? <LoadingSvg /> : renderPostCards() }
+      <h1>{ !postsList.length && !isFeedLoading ? 'There are no posts' : null }</h1>
       <p>{ errorMessage ? errorMessage : null }</p>
     </>
   )

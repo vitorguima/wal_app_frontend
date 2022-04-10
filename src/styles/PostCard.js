@@ -33,8 +33,11 @@ export const PostCard = styled.div`
   }
 `;
 
-export const PostTitle = styled.h1`
+export const PostTitle = styled.div`
+  font-size: 1.8rem;
   margin-top: 2%;
+  display: flex;
+  justify-content: space-between;
 
   @media ${devices.mobileL} {
     font-size: 1.2rem;
@@ -83,3 +86,23 @@ export const PostContent = styled.div`
     padding-bottom: 20%;
   }
 `;
+
+export const DeleteButton = styled.button`
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  color: black;
+  padding: 0;
+  font-size: 2rem;
+
+  :hover {
+    color: red;
+    font-weight: bold;
+  }
+
+  @media ${devices.mobileL} {
+    margin-right: 0.5%;
+  }
+`
