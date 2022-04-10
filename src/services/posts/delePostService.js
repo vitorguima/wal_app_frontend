@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const deletePostService = async (postId, token) => {
-  const POSTS_ENDPOINT = `https://wall-app-api.herokuapp.com/api/v1/posts/${postId}`;
+  const POSTS_ENDPOINT = `${process.env.REACT_APP_POST_CHANGES_ENDPOINT}${postId}`;
   try {
     const response = await axios({
       method: 'DELETE',
