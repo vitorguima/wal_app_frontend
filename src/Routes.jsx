@@ -10,11 +10,11 @@ import Register from './pages/Register';
 function Routes() {
   return (
     <Switch>
-      <Route exact path="/" component={ Home } />
-      <Route exact path="/feed" component={ Wall } />
-      <Route exact path="/register" component={ Register } />
-      <Route exact path="/publications" component={ Wall } />
-      <Route componente={ NotFound } />
+      <Route exact path="/" component={Home} />
+      <Route exact path="/feed" component={Wall} />
+      <Route exact path="/register" component={Register} />
+      <Route exact path="/publications" component={Wall} />
+      <Route componente={NotFound} />
     </Switch>
   );
 }

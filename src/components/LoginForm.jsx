@@ -1,8 +1,10 @@
-import { submitLoginService } from '../services/users/submitLoginService';
-import { Link, useHistory } from 'react-router-dom'
-import React, { useContext, useState } from 'react'
+import { Link, useHistory } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import submitLoginService from '../services/users/submitLoginService';
 import { validateEmail } from '../helpers/formsValidations';
-import { Form, LoginField, LoginButton, VisitorButton } from '../styles/LoginForm';
+import {
+  Form, LoginField, LoginButton, VisitorButton,
+} from '../styles/LoginForm';
 import LoadingSvg from '../assets/Loading';
 import AppContext from '../context/AppContext';
 
@@ -11,7 +13,7 @@ export default function LoginForm() {
     setHasAuthentication,
   } = useContext(AppContext);
 
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -29,35 +31,33 @@ export default function LoginForm() {
       sessionStorage.setItem('token', response.data.token);
       setHasAuthentication(true);
       history.push('/feed');
-      return
+      return;
     } setIsLoading(false);
-    setErrorMessage('Invalid user or password!')
-  }
+    setErrorMessage('Invalid user or password!');
+  };
 
-  const redirectAsVisitor = () => {
-    return (
-      history.push('/feed')
-    )
-  }
+  const redirectAsVisitor = () => (
+    history.push('/feed')
+  );
 
   return (
     <Form onSubmit={() => submitLogin()}>
-        <LoginField
-          type="text"
-          name="email"
-          value={email}
-          onChange={({ target }) => setEmail(target.value)}
-          placeholder="Email"
-          required={true}
-        />
-        <LoginField
-          type="password"
-          name="password"
-          value={password}
-          onChange={({ target }) => setPassword(target.value)}
-          placeholder="Password"
-          required={true}
-        />
+      <LoginField
+        type="text"
+        name="email"
+        value={email}
+        onChange={({ target }) => setEmail(target.value)}
+        placeholder="Email"
+        required
+      />
+      <LoginField
+        type="password"
+        name="password"
+        value={password}
+        onChange={({ target }) => setPassword(target.value)}
+        placeholder="Password"
+        required
+      />
       <LoginButton
         onClick={(event) => submitLogin(event)}
         type="submit"
@@ -76,8 +76,10 @@ export default function LoginForm() {
         { errorMessage ? <p>{errorMessage}</p> : null }
       </div>
       <p>
-        Become a brick! <Link to="/register">sign up</Link>
+        Become a brick!
+        {' '}
+        <Link to="/register">sign up</Link>
       </p>
     </Form>
-  )
-};
+  );
+}

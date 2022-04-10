@@ -1,9 +1,11 @@
 import React, { useEffect, useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
-import { validateTokenService } from '../services/authentication/validateTokenService';
+import validateTokenService from '../services/authentication/validateTokenService';
 
-import { HeaderBiggerWrapper, HeaderMinorWrapper, HeaderWrapper, LogoutButton } from '../styles/header';
+import {
+  HeaderBiggerWrapper, HeaderMinorWrapper, HeaderWrapper, LogoutButton,
+} from '../styles/header';
 
 export default function Header() {
   const history = useHistory();
@@ -13,18 +15,18 @@ export default function Header() {
     setHasAuthentication,
     setUser,
     setToken,
-  } = useContext(AppContext)
+  } = useContext(AppContext);
 
   const logoutUser = () => {
     sessionStorage.removeItem('token');
     setHasAuthentication(false);
     history.push('/');
-  }
+  };
 
   useEffect(() => {
     const retrievedToken = sessionStorage.getItem('token');
     if (!retrievedToken) {
-      return
+      return;
     }
 
     const validateToken = async () => {
@@ -34,12 +36,11 @@ export default function Header() {
         setHasAuthentication(true);
         setUser(response.data.token);
         setToken(retrievedToken);
-        return
       }
-    }
+    };
 
     validateToken();
-  }, [])
+  }, []);
 
   const renderHeaderItems = () => {
     if (hasAuthentication) {
@@ -63,7 +64,7 @@ export default function Header() {
             </div>
           </HeaderMinorWrapper>
         </>
-      )
+      );
     } return (
       <>
         <HeaderBiggerWrapper>
@@ -85,12 +86,12 @@ export default function Header() {
         </HeaderBiggerWrapper>
         <HeaderBiggerWrapper />
       </>
-    )
-  }
+    );
+  };
 
   return (
     <HeaderWrapper>
       {renderHeaderItems()}
     </HeaderWrapper>
-  )
+  );
 }
