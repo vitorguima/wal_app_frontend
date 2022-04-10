@@ -63,7 +63,7 @@ export default function NewPostForm() {
           </SubmitButton>
         </ButtonWrapper>
         <div>
-          <p>{errorMessage ? errorMessage : null}</p>
+          <p>{errorMessage && !isLoading ? errorMessage : null}</p>
         </div>
       </Form>
     </FormWrapper>
