@@ -5,9 +5,9 @@ import {
 
 export const PostCard = styled.div`
   padding: 0 1rem 0 1rem;
-  margin: 0rem 8rem 0rem 8rem;
+  margin: 0rem 8% 0rem 8%;
   width: 60%;
-  height: 25vh;
+  height: 10%;
   border: black;
   border-style: solid;
   border-width: thin;
@@ -15,21 +15,25 @@ export const PostCard = styled.div`
   border-color: #D3D3D3;
   background-color: white;
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
-  margin-top: 0.5rem;
+  margin-top: 3%;
+
+  p {
+    color: #707070;
+  }
 
   @media ${devices.tablet} {
     width: 75%;
-    height: 19vh;
+    height: 20%;
   }
   
   @media ${devices.mobileL} {
     width: 90%;
-    height: 26vh;
+    height: 25%;
   }
 `;
 
 export const PostTitle = styled.h1`
-  margin-top: 1rem;
+  margin-top: 2%;
 
   @media ${devices.mobileL} {
     font-size: 1.2rem;
@@ -38,23 +42,22 @@ export const PostTitle = styled.h1`
 
 export const PostDetails = styled.p`
   display: flex;
-  justify-content: space-even;
-  align-items: flex-end;
-  align-content: flex-end;
-  padding:0.5rem;
+  justify-content: flex-start;  
+  padding: 0.7%;
   margin: 0.5rem 5rem 0rem 0rem;
   font-size: 0.9rem;
-  width: 100%;
+  width: 95%;
   color: #707070;
-  border-top: black solid 1px;
-  border-color: #D3D3D3;
+  border-top: #D3D3D3 solid 1px;
+  height: 20%;
+  word-wrap: break-word;
 
   @media ${devices.mobileL} {
     font-size: 0.7rem;
   }
 
   p {
-    margin-right: 2rem;
+    margin-right: 4%;
   }
 `;
 
@@ -64,13 +67,18 @@ export const PostContent = styled.div`
   word-wrap: break-word;
   margin-top: 1em;
   margin-bottom: 1rem;
-  padding-bottom: 3.8rem;
+  padding-bottom: 10%;
+  height: 40%;
+  
+  p {
+    color: black;
+  }
 
   @media ${devices.mobileL} {
     font-size: 0.9rem;
   }
 
   @media ${devices.mobileL} {
-    padding-bottom: 4.5rem;
+    padding-bottom: 20%;
   }
 `;

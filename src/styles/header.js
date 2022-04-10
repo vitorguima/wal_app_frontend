@@ -28,7 +28,7 @@ export const HeaderWrapper = styled.div`
     }
 
     @media ${devices.mobileL} {
-      margin-right: 0.5em;
+      margin-right: 0.8;
     }
   }
 
@@ -66,6 +66,6 @@ export const LogoutButton = styled.button`
   }
 
   @media ${devices.mobileL} {
-    margin-right: 0.5em;
+    margin-right: 0.5%;
   }
 `

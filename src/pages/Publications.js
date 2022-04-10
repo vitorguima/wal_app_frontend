@@ -9,7 +9,7 @@ export default function Publications() {
   const history = useHistory();
 
   const feedMargin = {
-    '/publications': '7rem;',
+    '/publications': '14%',
     '/feed': '0'
   }
 

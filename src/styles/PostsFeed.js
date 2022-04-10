@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 export const FeedWrapper = styled.div`
-  padding-top: ${(props) => props.margin };
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   max-height: 100%;
-  background-color: #FDF4E3
+  background-color: #FDF4E3;
+  margin: 0;
+  padding-right: 2%;
+  padding-left: 2%;
+  padding: ${(props) => props.margin } 0 2% 0;
 `;
