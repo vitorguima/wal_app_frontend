@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const submitRegister = async (firstName, lastName, email, nickname, password) => {
-  const REGISTER_ENDPOINT = 'https://wall-app-api.herokuapp.com/api/v1/users'
+  const REGISTER_ENDPOINT = process.env.REACT_APP_REGISTER_ENDPOINT;
   try {
     const response = await axios({
       method: 'POST',

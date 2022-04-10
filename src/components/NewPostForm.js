@@ -17,8 +17,8 @@ export default function NewPostForm() {
   } = useContext(AppContext)
 
   const submitPost = async (title, content, token) => {
-    const response = await submitPostService(title, content, token);
     setIsLoading(true);
+    const response = await submitPostService(title, content, token);
     if (response.status === 201) {
       setIsLoading(false);
       setSubmittedPosts(submittedPosts + 1);

@@ -1,15 +1,15 @@
 import axios from 'axios';
 
-export const validateTokenService = async (token) => {
-  const VALID_TOKEN_ENDPOINT = process.env.REACT_APP_VALIDATE_TOKEN_ENDPOINT;
+export const deletePostService = async (postId, token) => {
+  const POSTS_ENDPOINT = `https://wall-app-api.herokuapp.com/api/v1/posts/${postId}`;
   try {
     const response = await axios({
-      method: 'POST',
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      url: VALID_TOKEN_ENDPOINT,
+      url: POSTS_ENDPOINT,
     });
 
     return response;
