@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import AppContext from '../context/AppContext';
 import { getPostsList } from '../services/getPostsService';
 import PostsCard from './PostCard';
+import LoadingSvg from '../assets/Loading';
 
 export default function PostsFeed() {
   const { 
@@ -26,6 +27,8 @@ export default function PostsFeed() {
     };
 
     getPosts()
+  // This is an expected behavior, the page should re-render to retrieve the new post submitted by the user.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [submittedPosts])
 
   const renderPostCards = () => (
@@ -35,17 +38,16 @@ export default function PostsFeed() {
         content={post.content}
         authorNickname={post.author_nickname}
         createdAt={post.created_at}
-        updatedAt={post.updatedAt}
+        updatedAt={post.updated_at}
         key={index}
       />
     ))
   )
 
   return (
-    <div>
-      <p>PostsFeed</p>
-      { !isFeedLoading ? renderPostCards() : <p>Loading...</p> }
+    <>
+      { isFeedLoading ? <LoadingSvg /> : renderPostCards() }
       <p>{ errorMessage ? errorMessage : null }</p>
-    </div>
+    </>
   )
 }

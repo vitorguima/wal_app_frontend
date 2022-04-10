@@ -1,9 +1,16 @@
 import { submitLoginService } from '../services/submitLoginService';
-import  { Link, useHistory } from 'react-router-dom'
-import React, { useState } from 'react'
-import { validateEmail } from '../helpers/validations';
+import { Link, useHistory } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { validateEmail } from '../helpers/formsValidations';
+import { Form, LoginField, LoginButton, VisitorButton } from '../styles/LoginForm';
+import LoadingSvg from '../assets/Loading';
+import AppContext from '../context/AppContext';
 
 export default function LoginForm() {
+  const {
+    setHasAuthentication,
+  } = useContext(AppContext);
+
   const [isLoading, setIsLoading] = useState(false)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,53 +18,64 @@ export default function LoginForm() {
 
   const history = useHistory();
 
-  const submitLogin = async () => {
+  const submitLogin = async (event) => {
+    event.preventDefault();
     setIsLoading(true);
     setErrorMessage('');
-    const response = await submitLoginService(email, password)
+    const response = await submitLoginService(email, password);
 
     if (response.status === 201) {
       setIsLoading(false);
       sessionStorage.setItem('token', response.data.token);
+      setHasAuthentication(true);
       history.push('/feed');
       return
     } setIsLoading(false);
     setErrorMessage('Invalid user or password!')
   }
 
+  const redirectAsVisitor = () => {
+    return (
+      history.push('/feed')
+    )
+  }
+
   return (
-    <div>
-      <form>
-          <div>
-            <input
-              type="text"
-              name="email"
-              value={ email }
-              onChange={ ({ target }) => setEmail(target.value) }
-              placeholder="Email"
-            />
-          </div>
-          <div>
-            <input
-              type="password"
-              name="password"
-              value={ password }
-              onChange={ ({ target }) => setPassword(target.value) }
-              placeholder="Password"
-            />
-          </div>
-          <button
-            onClick={ () => submitLogin() }
-            type="button"
-            disabled={validateEmail(email)}
-          >
-            { isLoading ? 'Loading' : 'Sign in' }
-          </button>
-      </form>
-      <p>{errorMessage ? errorMessage : null}</p>
+    <Form onSubmit={() => submitLogin()}>
+        <LoginField
+          type="text"
+          name="email"
+          value={email}
+          onChange={({ target }) => setEmail(target.value)}
+          placeholder="Email"
+        />
+        <LoginField
+          type="password"
+          name="password"
+          value={password}
+          onChange={({ target }) => setPassword(target.value)}
+          placeholder="Password"
+        />
+      <LoginButton
+        onClick={(event) => submitLogin(event)}
+        type="submit"
+        disabled={!validateEmail(email)}
+      >
+        Sign in
+      </LoginButton>
+      <VisitorButton
+        onClick={() => redirectAsVisitor()}
+        type="button"
+      >
+        Visitor
+      </VisitorButton>
+      <div>
+        { isLoading ? <LoadingSvg /> : null }
+        { errorMessage ? <p>{errorMessage}</p> : null }
+      </div>
       <p>
-        Not a waller? <Link to="/register">sign up</Link>
+        Become a brick! <Link to="/register">sign up</Link>
       </p>
-    </div>
+    </Form>
   )
-}
+};
