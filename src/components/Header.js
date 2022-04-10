@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import AppContext from '../context/AppContext';
-import { validateTokenService } from '../services/validateTokenService';
+import { validateTokenService } from '../services/authentication/validateTokenService';
 
 import { HeaderBiggerWrapper, HeaderMinorWrapper, HeaderWrapper, LogoutButton } from '../styles/header';
 
 export default function Header() {
-  const [isLoading, setIsLoading] = useState(true);
   const history = useHistory();
 
   const {
     hasAuthentication,
     setHasAuthentication,
     setUser,
+    setToken,
   } = useContext(AppContext)
 
   const logoutUser = () => {
@@ -24,7 +24,6 @@ export default function Header() {
   useEffect(() => {
     const retrievedToken = sessionStorage.getItem('token');
     if (!retrievedToken) {
-      setIsLoading(false);
       return
     }
 
@@ -33,10 +32,10 @@ export default function Header() {
 
       if (response.status === 200) {
         setHasAuthentication(true);
-        setIsLoading(false);
         setUser(response.data.token);
+        setToken(retrievedToken);
         return
-      } setIsLoading(false);
+      }
     }
 
     validateToken();
@@ -46,7 +45,18 @@ export default function Header() {
     if (hasAuthentication) {
       return (
         <>
-          <HeaderBiggerWrapper />
+          <HeaderBiggerWrapper>
+            <Link to="/publications" style={{ textDecoration: 'none' }}>
+              <span>
+                My Posts
+              </span>
+            </Link>
+            <Link to="/feed" style={{ textDecoration: 'none' }}>
+              <span>
+                Feed
+              </span>
+            </Link>
+          </HeaderBiggerWrapper>
           <HeaderMinorWrapper>
             <div>
               <LogoutButton onClick={() => logoutUser()}>Logout</LogoutButton>
@@ -80,7 +90,7 @@ export default function Header() {
 
   return (
     <HeaderWrapper>
-      { isLoading ? null : renderHeaderItems() }
+      {renderHeaderItems()}
     </HeaderWrapper>
   )
 }

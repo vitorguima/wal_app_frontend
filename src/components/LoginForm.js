@@ -1,4 +1,4 @@
-import { submitLoginService } from '../services/submitLoginService';
+import { submitLoginService } from '../services/users/submitLoginService';
 import { Link, useHistory } from 'react-router-dom'
 import React, { useContext, useState } from 'react'
 import { validateEmail } from '../helpers/formsValidations';
@@ -48,6 +48,7 @@ export default function LoginForm() {
           value={email}
           onChange={({ target }) => setEmail(target.value)}
           placeholder="Email"
+          required={true}
         />
         <LoginField
           type="password"
@@ -55,6 +56,7 @@ export default function LoginForm() {
           value={password}
           onChange={({ target }) => setPassword(target.value)}
           placeholder="Password"
+          required={true}
         />
       <LoginButton
         onClick={(event) => submitLogin(event)}

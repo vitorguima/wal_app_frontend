@@ -64,7 +64,7 @@ export const LoginButton = styled.button`
   }
   
   @media ${devices.mobileL} {
-    width: 40%;
+    width: 50%;
     padding: 0.5rem 1rem;
   }
 `;
@@ -88,7 +88,7 @@ export const VisitorButton = styled.button`
   }
 
   @media ${devices.mobileL} {
-    width: 40%;
+    width: 50%;
     padding: 0.5rem 1rem;
   }
 `;

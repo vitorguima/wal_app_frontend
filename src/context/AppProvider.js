@@ -7,6 +7,7 @@ export default function AppProvider({ children }) {
   const [user, setUser] = useState();
   const [hasAuthentication, setHasAuthentication] = useState(false);
   const [submittedPosts, setSubmittedPosts] = useState(0);
+  const [postsList, setPostsList] = useState([]);
 
   const contextValue = {
     isFeedLoading,
@@ -19,6 +20,8 @@ export default function AppProvider({ children }) {
     setHasAuthentication,
     submittedPosts,
     setSubmittedPosts,
+    postsList,
+    setPostsList,
   }
 
   return (

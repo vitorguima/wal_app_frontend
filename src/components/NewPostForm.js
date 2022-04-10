@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import AppContext from '../context/AppContext';
-import { submitPostService } from '../services/submitPostService';
+import { submitPostService } from '../services/posts/submitPostService';
 import { ButtonWrapper, ContentField, Form, FormWrapper, SubmitButton, TitleField } from '../styles/newPostForm';
 
 export default function NewPostForm() {

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getPostsList = async () => {
+export const getPostsListService = async () => {
   const POSTS_ENDPOINT = 'https://wall-app-api.herokuapp.com/api/v1/posts';
   try {
     const response = await axios({
