@@ -6,7 +6,6 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Wall from './pages/Wall';
 import Register from './pages/Register';
-import Publications from './pages/Publications';
 
 function Routes() {
   return (
@@ -14,7 +13,7 @@ function Routes() {
       <Route exact path="/" component={ Home } />
       <Route exact path="/feed" component={ Wall } />
       <Route exact path="/register" component={ Register } />
-      <Route exact path="/publications" component={ Publications } />
+      <Route exact path="/publications" component={ Wall } />
       <Route componente={ NotFound } />
     </Switch>
   );

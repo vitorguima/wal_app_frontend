@@ -40,7 +40,7 @@ export default function PostsFeed() {
     getPosts();
   // This is an expected behavior, the page should re-render to retrieve the new post submitted by the user.
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [submittedPosts])
+  }, [submittedPosts, currentPath])
 
   const renderPostCards = () => (
     postsList.map((post, index) => (
