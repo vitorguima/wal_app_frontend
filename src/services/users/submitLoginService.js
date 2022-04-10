@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const submitLoginService = async (email, password) => {
-  const AUTHENTICATION_ENDPOINT = 'https://wall-app-api.herokuapp.com/api/v1/authenticate';
+  const AUTHENTICATION_ENDPOINT = process.env.REACT_APP_AUTHENTICATION_ENDPOINT;
   try {
     const response = await axios({
       method: 'POST',

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const submitPostService = async (title, content, token) => {
-  const POSTS_ENDPOINT = 'https://wall-app-api.herokuapp.com/api/v1/posts';
+  const POSTS_ENDPOINT = process.env.REACT_APP_POSTS_ENDPOINT;
   try {
     const response = await axios({
       method: 'POST',

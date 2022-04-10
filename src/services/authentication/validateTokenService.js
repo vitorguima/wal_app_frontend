@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const validateTokenService = async (token) => {
-  const VALID_TOKEN_ENDPOINT = 'https://wall-app-api.herokuapp.com/api/v1/token';
+  const VALID_TOKEN_ENDPOINT = process.env.REACT_APP_VALIDATE_TOKEN_ENDPOINT;
   try {
     const response = await axios({
       method: 'POST',
