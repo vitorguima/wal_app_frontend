@@ -24,6 +24,13 @@ export default function RegisterForm() {
 
   const submitRegistration = async (event) => {
     event.preventDefault();
+    const validFields = validateFields(firstName, lastName, email, password, passwordCheck);
+
+    if (validFields) {
+      setErrorMessage(validFields);
+      return;
+    }
+
     setErrorMessage('');
     setIsLoading(true);
     const response = await submitRegister(
@@ -90,7 +97,6 @@ export default function RegisterForm() {
       <RegisterButton
         onClick={(event) => submitRegistration(event)}
         type="submit"
-        disabled={validateFields(email, password, passwordCheck)}
       >
         { isLoading ? 'loading' : 'Sign up' }
       </RegisterButton>
