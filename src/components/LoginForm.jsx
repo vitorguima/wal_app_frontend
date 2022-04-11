@@ -22,6 +22,11 @@ export default function LoginForm() {
 
   const submitLogin = async (event) => {
     event.preventDefault();
+    const validFields = validateEmail(email);
+    if (!validFields) {
+      setErrorMessage('Invalid email format!');
+      return;
+    }
     setIsLoading(true);
     setErrorMessage('');
     const response = await submitLoginService(email, password);
@@ -61,7 +66,6 @@ export default function LoginForm() {
       <LoginButton
         onClick={(event) => submitLogin(event)}
         type="submit"
-        disabled={!validateEmail(email)}
       >
         Sign in
       </LoginButton>

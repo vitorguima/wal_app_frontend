@@ -6,8 +6,22 @@ export const validateEmail = (email) => {
 
 export const validatePassword = (password, confirmPassword) => password === confirmPassword;
 
-export const validateFields = (email, password, confirmPassword) => {
-  if (validateEmail(email) && validatePassword(password, confirmPassword)) {
-    return false;
-  } return true;
+export const validateFields = (name, lastName, email, password, confirmPassword) => {
+  if (validateEmail(email) === false) {
+    return 'Invalid email format!';
+  }
+
+  if (!validatePassword(password, confirmPassword)) {
+    return 'Passwords do not match!';
+  }
+
+  if (!name) {
+    return "First name can't be blank!";
+  }
+
+  if (!lastName) {
+    return "Last name can't be blank!";
+  }
+
+  return null;
 };

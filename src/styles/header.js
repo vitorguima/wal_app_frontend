@@ -30,6 +30,7 @@ export const HeaderWrapper = styled.div`
 
     @media ${devices.mobileL} {
       margin-right: 0.8;
+      font-size: 1em;
     }
   }
 
