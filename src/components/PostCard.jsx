@@ -66,6 +66,7 @@ export default function PostsCard(props) {
       </PostTitle>
       <p>
         Author:
+        ` `
         {authorNickname}
       </p>
       <PostContent>
@@ -74,6 +75,7 @@ export default function PostsCard(props) {
       <PostDetails>
         <p>
           Created at:
+          ` `
           {convertData(createdAt)}
         </p>
       </PostDetails>
