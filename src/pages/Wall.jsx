@@ -11,7 +11,7 @@ export default function Wall() {
 
   // eslint-disable-next-line consistent-return
   useEffect(() => {
-    const token = sessionStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
     if (!token && currentPath === '/publications') return history.push('/');
   }, []);

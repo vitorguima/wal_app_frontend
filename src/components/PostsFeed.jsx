@@ -26,7 +26,7 @@ export default function PostsFeed() {
 
   const getPosts = async () => {
     setIsFeedLoading(true);
-    const token = sessionStorage.getItem('token');
+    const token = localStorage.getItem('token');
     const response = await servicesDictionary[currentPath](token);
 
     if (response.status === 200) {

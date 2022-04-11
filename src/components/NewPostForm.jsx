@@ -32,7 +32,7 @@ export default function NewPostForm() {
   };
 
   useEffect(() => {
-    const retrievedToken = sessionStorage.getItem('token');
+    const retrievedToken = localStorage.getItem('token');
     setToken(retrievedToken);
   }, []);
 

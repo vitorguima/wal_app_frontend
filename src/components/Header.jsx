@@ -18,13 +18,13 @@ export default function Header() {
   } = useContext(AppContext);
 
   const logoutUser = () => {
-    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
     setHasAuthentication(false);
     history.push('/');
   };
 
   useEffect(() => {
-    const retrievedToken = sessionStorage.getItem('token');
+    const retrievedToken = localStorage.getItem('token');
     if (!retrievedToken) {
       return;
     }

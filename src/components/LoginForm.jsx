@@ -33,7 +33,7 @@ export default function LoginForm() {
 
     if (response.status === 201) {
       setIsLoading(false);
-      sessionStorage.setItem('token', response.data.token);
+      localStorage.setItem('token', response.data.token);
       setHasAuthentication(true);
       history.push('/feed');
       return;
