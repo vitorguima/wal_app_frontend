@@ -37,5 +37,5 @@ or
 ```
 
 ### Concerns:
-* The user session and the authentication token are being handled and stored by the client at the browser's local storage. It creates a certain vulneraibility to [XSS atacks](https://dev.to/cotter/localstorage-vs-cookies-all-you-need-to-know-about-storing-jwt-tokens-securely-in-the-front-end-15id).
+* The user session and the authentication token are being handled and stored by the client at the browser's local storage. It creates a certain vulneraibility to [XSS atacks](https://owasp.org/www-community/attacks/xss/).
 * The feed won't update automatically. It will only show new posts after the user execute an update action.
