@@ -18,6 +18,10 @@ export const Form = styled.form`
   p {
     margin-top: 0.8rem;
     font-size: 1.2rem;
+
+    @media ${devices.mobileL} {
+      font-size: 0.9rem; 
+    }
   }
 `;
 
@@ -38,6 +42,11 @@ export const LoginField = styled.input`
 
   ::placeholder {
     color: #A9A9A9;
+  }
+
+  @media ${devices.mobileL} {
+    height: 8%;
+    margin: 0.5rem;
   }
 `;
 
@@ -65,7 +74,7 @@ export const LoginButton = styled.button`
   
   @media ${devices.mobileL} {
     width: 50%;
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 0.9rem;
   }
 `;
 
@@ -89,6 +98,6 @@ export const VisitorButton = styled.button`
 
   @media ${devices.mobileL} {
     width: 50%;
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 0.9rem;
   }
 `;
