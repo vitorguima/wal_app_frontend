@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import {
-  devices
+  devices,
 } from './sizeAndDevices';
 
 export const HeaderWrapper = styled.div`
@@ -69,4 +69,4 @@ export const LogoutButton = styled.button`
   @media ${devices.mobileL} {
     margin-right: 0.5%;
   }
-`
+`;

@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import AppContext from '../context/AppContext';
-import { submitPostService } from '../services/posts/submitPostService';
-import { ButtonWrapper, ContentField, Form, FormWrapper, SubmitButton, TitleField } from '../styles/newPostForm';
+import submitPostService from '../services/posts/submitPostService';
+import {
+  ButtonWrapper, ContentField, Form, FormWrapper, SubmitButton, TitleField,
+} from '../styles/newPostForm';
 
 export default function NewPostForm() {
   const [errorMessage, setErrorMessage] = useState('');
@@ -14,9 +16,9 @@ export default function NewPostForm() {
     hasAuthentication,
     submittedPosts,
     setSubmittedPosts,
-  } = useContext(AppContext)
+  } = useContext(AppContext);
 
-  const submitPost = async (title, content, token) => {
+  const submitPost = async () => {
     setIsLoading(true);
     const response = await submitPostService(title, content, token);
     if (response.status === 201) {
@@ -24,40 +26,40 @@ export default function NewPostForm() {
       setSubmittedPosts(submittedPosts + 1);
       setTitle('');
       setContent('');
-      return
+      return;
     } setIsLoading(false);
-    setErrorMessage(response.data.error.message)
-  }
+    setErrorMessage(response.data.error.message);
+  };
 
   useEffect(() => {
-    const token = sessionStorage.getItem('token');
-    setToken(token);
-  }, [])
+    const retrievedToken = sessionStorage.getItem('token');
+    setToken(retrievedToken);
+  }, []);
 
   return (
     <FormWrapper>
       <Form>
-          <TitleField 
-            type="text"
-            name="title"
-            value={ title }
-            onChange={ ({ target }) => setTitle(target.value) }
-            placeholder="Title"
-            disabled={ !hasAuthentication }
-          />
-          <ContentField
-            type="text"
-            name="content"
-            value={ content }
-            onChange={ ({ target }) => setContent(target.value) }
-            placeholder="Write your idea!"
-            disabled={ !hasAuthentication }
-          />
+        <TitleField
+          type="text"
+          name="title"
+          value={title}
+          onChange={({ target }) => setTitle(target.value)}
+          placeholder="Title"
+          disabled={!hasAuthentication}
+        />
+        <ContentField
+          type="text"
+          name="content"
+          value={content}
+          onChange={({ target }) => setContent(target.value)}
+          placeholder="Write your idea!"
+          disabled={!hasAuthentication}
+        />
         <ButtonWrapper>
           <SubmitButton
-            onClick={() => submitPost(title, content, token) }
+            onClick={() => submitPost(title, content, token)}
             type="button"
-            disabled={ !hasAuthentication }
+            disabled={!hasAuthentication}
           >
             Post
           </SubmitButton>
@@ -67,5 +69,5 @@ export default function NewPostForm() {
         </div>
       </Form>
     </FormWrapper>
-  )
+  );
 }

@@ -1,3 +1,3 @@
-export const validateOwner = (userId, currentUser) => {
-  return userId === currentUser;
-};
+const validateOwner = (userId, currentUser) => userId === currentUser;
+
+export default validateOwner;

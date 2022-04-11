@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import {
-  devices
+  devices,
 } from './sizeAndDevices';
 
 export const HomeWrapper = styled.div`

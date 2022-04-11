@@ -1,6 +1,8 @@
-import React from 'react'
-import LoginForm from '../components/LoginForm'
-import { HomeWrapper, FormWrapper, LogoWrapper, Logo, SubLogo } from '../styles/home';
+import React from 'react';
+import LoginForm from '../components/LoginForm';
+import {
+  HomeWrapper, FormWrapper, LogoWrapper, Logo, SubLogo,
+} from '../styles/home';
 
 export default function Home() {
   return (
@@ -13,5 +15,5 @@ export default function Home() {
         <LoginForm />
       </FormWrapper>
     </HomeWrapper>
-  )
+  );
 }

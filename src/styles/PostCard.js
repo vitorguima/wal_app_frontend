@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import {
-  devices
+  devices,
 } from './sizeAndDevices';
 
 export const PostCard = styled.div`
@@ -105,4 +105,4 @@ export const DeleteButton = styled.button`
   @media ${devices.mobileL} {
     margin-right: 0.5%;
   }
-`
+`;

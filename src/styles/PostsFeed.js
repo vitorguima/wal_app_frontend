@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const FeedWrapper = styled.div`
+const FeedWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,5 +11,7 @@ export const FeedWrapper = styled.div`
   margin: 0;
   padding-right: 2%;
   padding-left: 2%;
-  padding: ${(props) => props.margin } 0 2% 0;
+  padding: ${(props) => props.margin} 0 2% 0;
 `;
+
+export default FeedWrapper;
