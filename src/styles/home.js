@@ -54,7 +54,6 @@ export const LogoWrapper = styled.div`
   border: solid 3px #6e7491;
   padding: 2rem 7rem;
   width: 37vw;
-  height: 90%;
   transform: rotate(-1deg);
   box-shadow: 3px 15px 8px -10px rgba(0, 0, 0, 0.3);
   transition: all 0.13s ease-in;
