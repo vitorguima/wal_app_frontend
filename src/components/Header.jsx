@@ -21,6 +21,7 @@ export default function Header() {
     localStorage.removeItem('token');
     setHasAuthentication(false);
     history.push('/');
+    setUser(null);
   };
 
   useEffect(() => {
