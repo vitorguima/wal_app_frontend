@@ -2,11 +2,11 @@
 import React from 'react';
 import AppProvider from '../context/AppProvider';
 import Home from '../pages/Home';
-import renderWithRouter from './RenderWithRouter';
+import RenderWithRouter from './RenderWithRouter';
 
-describe('Tests if Home is rendering correctly', () => {
+describe('Tests if Home page is rendering correctly', () => {
   it('check if logo is rendering', () => {
-    const { getByText } = renderWithRouter(
+    const { getByText } = RenderWithRouter(
       <AppProvider>
         <Home />
       </AppProvider>,
@@ -19,7 +19,7 @@ describe('Tests if Home is rendering correctly', () => {
   });
 
   it('check if login form is rendering', () => {
-    const { getByTestId, getByText } = renderWithRouter(
+    const { getByTestId, getByText } = RenderWithRouter(
       <AppProvider>
         <Home />
       </AppProvider>,
