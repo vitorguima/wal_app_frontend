@@ -54,6 +54,7 @@ export default function LoginForm() {
         onChange={({ target }) => setEmail(target.value)}
         placeholder="Email"
         required
+        data-testid="login-field-1"
       />
       <LoginField
         type="password"
@@ -62,6 +63,7 @@ export default function LoginForm() {
         onChange={({ target }) => setPassword(target.value)}
         placeholder="Password"
         required
+        data-testid="login-field-2"
       />
       <LoginButton
         onClick={(event) => submitLogin(event)}
