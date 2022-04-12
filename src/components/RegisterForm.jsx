@@ -58,6 +58,7 @@ export default function RegisterForm() {
         value={firstName}
         onChange={({ target }) => setFirstName(target.value)}
         placeholder="First name"
+        data-testid="first-name"
       />
       <RegisterField
         type="text"
@@ -65,6 +66,7 @@ export default function RegisterForm() {
         value={lastName}
         onChange={({ target }) => setLastName(target.value)}
         placeholder="Last name"
+        data-testid="last-name"
       />
       <RegisterField
         type="text"
@@ -72,6 +74,7 @@ export default function RegisterForm() {
         value={nickname}
         onChange={({ target }) => setNickname(target.value)}
         placeholder="Nickname"
+        data-testid="nickname"
       />
       <RegisterField
         type="text"
@@ -79,6 +82,7 @@ export default function RegisterForm() {
         value={email}
         onChange={({ target }) => setEmail(target.value)}
         placeholder="Email"
+        data-testid="email"
       />
       <RegisterField
         type="password"
@@ -86,6 +90,7 @@ export default function RegisterForm() {
         value={password}
         onChange={({ target }) => setPassword(target.value)}
         placeholder="Password"
+        data-testid="password"
       />
       <RegisterField
         type="password"
@@ -93,12 +98,13 @@ export default function RegisterForm() {
         value={passwordCheck}
         onChange={({ target }) => setPasswordCheck(target.value)}
         placeholder="Confirm password"
+        data-testid="check-password"
       />
       <RegisterButton
         onClick={(event) => submitRegistration(event)}
         type="submit"
       >
-        { isLoading ? 'loading' : 'Sign up' }
+        Sign up
       </RegisterButton>
       <p>{errorMessage || null}</p>
       <div>
