@@ -32,7 +32,6 @@ export default function Header() {
 
     const validateToken = async () => {
       const response = await validateTokenService(retrievedToken);
-
       if (response.status === 200) {
         setHasAuthentication(true);
         setUser(response.data.token);
@@ -70,12 +69,16 @@ export default function Header() {
       <>
         <HeaderBiggerWrapper>
           <Link to="/" style={{ textDecoration: 'none' }}>
-            <span>
+            <span
+              data-testid="sign-in"
+            >
               Sign in
             </span>
           </Link>
           <Link to="/register" style={{ textDecoration: 'none' }}>
-            <span>
+            <span
+              data-testid="sign-up"
+            >
               Sign up
             </span>
           </Link>
