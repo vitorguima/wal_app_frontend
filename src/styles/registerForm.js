@@ -29,7 +29,7 @@ export const Form = styled.form`
     font-size: 1.9rem;
 
     @media ${devices.mobileL} {
-      font-size: 1.6rem;
+      font-size: 1.2rem;
     }
   }
 
@@ -39,6 +39,7 @@ export const Form = styled.form`
 
   @media ${devices.mobileL} {
     width: 90%;
+    padding: 1.5rem;
   }
 `;
 
@@ -79,5 +80,14 @@ export const RegisterButton = styled.button`
   transition: all 0.3s ease-out;
   :hover {
     background: #00BFFF;
+  }
+
+  @media ${devices.tablet} {
+    width: 60%;
+  }
+  
+  @media ${devices.mobileL} {
+    width: 50%;
+    padding: 0.3rem 0.9rem;
   }
 `;
