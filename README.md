@@ -62,3 +62,4 @@ npm run test-coverage
 * [Axios](https://github.com/axios/axios)
 * [React Router](https://reactrouter.com/)
 * [Coverage](https://github.com/shinnn/coverage)
+* [Jest mock axios](https://github.com/knee-cola/jest-mock-axios)
