@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import React, { useState } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import PropTypes from 'prop-types';
 import AppContext from './AppContext';
 
-// eslint-disable-next-line react/prop-types
 export default function AppProvider({ children }) {
   const [isFeedLoading, setIsFeedLoading] = useState(false);
   const [token, setToken] = useState('');
@@ -32,3 +33,7 @@ export default function AppProvider({ children }) {
     </AppContext.Provider>
   );
 }
+
+AppProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};

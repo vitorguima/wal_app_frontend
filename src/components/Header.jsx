@@ -88,7 +88,7 @@ export default function Header() {
             </span>
           </Link>
         </HeaderBiggerWrapper>
-        <HeaderBiggerWrapper />
+        <HeaderMinorWrapper />
       </>
     );
   };

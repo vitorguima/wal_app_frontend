@@ -1,5 +1,6 @@
-/* eslint-disable react/prop-types */
 import React, { useContext } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import PropTypes from 'prop-types';
 import {
   PostCard, PostTitle, PostDetails, PostContent, DeleteButton,
 } from '../styles/PostCard';
@@ -84,3 +85,13 @@ export default function PostsCard(props) {
     </PostCard>
   );
 }
+
+PostsCard.propTypes = {
+  title: PropTypes.string,
+  content: PropTypes.string,
+  authorNickname: PropTypes.string,
+  createdAt: PropTypes.string,
+  userId: PropTypes.number,
+  user: PropTypes.number,
+  postId: PropTypes.number,
+}.isRequired;

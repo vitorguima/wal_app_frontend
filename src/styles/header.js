@@ -29,7 +29,6 @@ export const HeaderWrapper = styled.div`
     }
 
     @media ${devices.mobileL} {
-      margin-right: 0.8;
       font-size: 1em;
     }
   }
@@ -43,6 +42,17 @@ export const HeaderBiggerWrapper = styled.div`
   display: flex;
   width: 70vw;
   justify-content: flex-start;
+  padding: 0.5rem;
+
+  span {
+    @media ${devices.mobileL} {
+      margin-right: 1rem;
+    }
+  }
+
+  @media ${devices.mobileL} {
+    width: 75vw;
+  }
 `;
 
 export const HeaderMinorWrapper = styled.div`
@@ -50,6 +60,10 @@ export const HeaderMinorWrapper = styled.div`
   width: 30vw;
   /* background-color: red; */
   justify-content: flex-end;
+
+  @media ${devices.mobileL} {
+    width: 25vw;
+  }
 `;
 
 export const LogoutButton = styled.button`
@@ -59,7 +73,7 @@ export const LogoutButton = styled.button`
   cursor: pointer;
   padding: 0;
   color: black;
-  padding: 0;
+  padding: 0.5rem;
   margin: 2vw;
 
   :hover {
