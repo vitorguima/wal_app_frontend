@@ -17,6 +17,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+      <script>
+        {
+          var WS = window.WebSocket;
+          function DevWebSocket(s) {
+            if (s === "wss://wall-app-client.herokuapp.com:6700/ws") {
+              console.info("[DEV NOTICE] Live Reload Has Been Disabled");
+              return {};
+            } else {
+              // Pass through other usage of sockets
+              return new WS(s);
+            }
+          }
+          window.WebSocket = DevWebSocket;
+        }
+      </script>
     <title>Wall App</title>
   </head>
   <body>
