@@ -19,9 +19,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
       <script>
         {
-          var WS = window.WebSocket;
+          const WS = window.WebSocket;
           function DevWebSocket(s) {
-            if (s === "wss://wall-app-client.herokuapp.com:6700/ws") {
+            if (s === "ws://wall-app-client.herokuapp.com:36707/ws") {
               console.info("[DEV NOTICE] Live Reload Has Been Disabled");
               return {};
             } else {
