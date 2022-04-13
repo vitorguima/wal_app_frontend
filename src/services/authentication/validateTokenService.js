@@ -4,7 +4,7 @@ const validateTokenService = async (token) => {
   const VALID_TOKEN_ENDPOINT = process.env.REACT_APP_VALIDATE_TOKEN_ENDPOINT;
   try {
     const response = await axios({
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
