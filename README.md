@@ -1,7 +1,7 @@
 # Wall app Client
 The Wall Client provides an interface to consume resources from the [Wall API](https://github.com/vitorguima/wall_app_api). The application was built with [ReactJS](https://reactjs.org/) and [Styled Components](https://styled-components.com/).
 
-## API deploy at Heroku:
+## API deployment at Heroku:
 
 * [Link to Production environment](https://wall-app-client.herokuapp.com/)
 
