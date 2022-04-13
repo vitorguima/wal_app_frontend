@@ -21,12 +21,12 @@
         {
           const WS = window.WebSocket;
           function DevWebSocket(s) {
-            if (s === "ws://wall-app-client.herokuapp.com:36707/ws") {
+            if (s === "wss://wall-app-client.herokuapp.com:50667/ws") {
               console.info("[DEV NOTICE] Live Reload Has Been Disabled");
               return {};
             } else {
               // Pass through other usage of sockets
-              return new WS(s);
+              return {};
             }
           }
           window.WebSocket = DevWebSocket;
