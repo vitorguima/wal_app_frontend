@@ -59,7 +59,9 @@ export default function PostsCard(props) {
   };
 
   return (
-    <PostCard>
+    <PostCard
+      data-testid="post-card"
+    >
       <PostTitle>
         {title}
         { renderDeleteButton() }
