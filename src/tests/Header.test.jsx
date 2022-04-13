@@ -4,27 +4,9 @@ import { waitFor } from '@testing-library/react';
 import AppProvider from '../context/AppProvider';
 import Header from '../components/Header';
 import RenderWithRouter from './RenderWithRouter';
+import fakeLocalStorage from '../__mocks__/fakeLocalStorage';
 
 const axios = require('axios');
-
-const fakeLocalStorage = (function () {
-  let store = {};
-
-  return {
-    getItem(key) {
-      return store[key] || null;
-    },
-    setItem(key, value) {
-      store[key] = value.toString();
-    },
-    removeItem(key) {
-      delete store[key];
-    },
-    clear() {
-      store = {};
-    },
-  };
-}());
 
 describe('Tests if Header component is rendering correctly', () => {
   beforeAll(() => {
